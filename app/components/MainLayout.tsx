@@ -106,7 +106,7 @@ export default function MainLayout({
     const { dir } = useLanguage();
 
     return (
-        <div dir={dir} className="min-h-screen bg-app-bg text-app-text transition-colors duration-300">
+        <div dir={dir} className="min-h-screen bg-transparent text-app-text transition-colors duration-300">
             <Navbar />
             <main className="pt-16">{children}</main>
         </div>

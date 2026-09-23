@@ -12,13 +12,13 @@ export const translations = {
     "home.hero.available":
       "Available for select freelance projects & frontend roles",
     "home.hero.role": "Frontend Developer / React.js & Next.js",
-    "home.hero.bio": "I design and build polished digital experiences with React, Next.js, motion, and performance-focused front-end systems.",
+    "home.hero.bio": "I design and build polished digital experiences with React, Next.js, Three.js, motion, and performance-focused front-end systems.",
     "home.hero.headline1": "Premium websites.",
     "home.hero.headline2": " Built to convert.",
     "home.hero.viewWork": "View Work",
     "home.hero.startProject": "Request Project",
     "home.hero.feature1": "2+ of experience in building the websites",
-    "home.hero.feature2": "React, Next.js, Redux, TypeScript",
+    "home.hero.feature2": "React, Next.js, Redux, TypeScript, Three.js",
     "home.hero.feature3": "Fast interfaces with refined motion",
     "home.hero.name": "Salma Tarek",
     "home.hero.subtitle": "Creative Frontend",
@@ -71,6 +71,8 @@ export const translations = {
     "home.about.highlight": "Highlight",
     "home.toolkit.title": "Toolkit",
     "home.toolkit.subtitle": "Tools I use regularly (and build projects with):",
+    "home.toolkit.development": "Development",
+    "home.toolkit.designAndMarketing": "Design & Marketing",
     "home.contact.badge": "Get in touch",
     "home.contact.title": "Let's build something clean and fast.",
     "home.contact.subtitle":
@@ -99,7 +101,7 @@ export const translations = {
     "services.web.title": "Frontend Development",
     "services.web.subtitle": "React.js & Next.js",
     "services.web.desc":
-      "Building modern, scalable, and high-performance web applications using React and Next.js with a focus on clean architecture and user experience.",
+      "Building modern, scalable, and high-performance web applications using React, Next.js, and TypeScript, with a focus on clean architecture, immersive 3D experiences, and exceptional user experience.",
     "services.backend.title": "Backend Development",
     "services.backend.subtitle": "Node.js & Scalable APIs",
     "services.backend.desc":
@@ -120,7 +122,7 @@ export const translations = {
     "services.additional.performanceDesc": "Speed optimization",
     "services.additional.consultation": "Consultation",
     "services.additional.consultationDesc": "Expert guidance",
-    
+
     // الخدمات الإضافية المحدثة:
     "services.additional.dashboard": "Easy Dashboard",
     "services.additional.dashboardDesc": "Manage and add products effortlessly",
@@ -131,7 +133,7 @@ export const translations = {
     // 🚀 الخدمة الرابعة الجديدة:
     "services.additional.seo": "SEO Optimization",
     "services.additional.seoDesc": "Rank higher on Google search results",
-    
+
     "services.cta.title": "Need a Custom Solution?",
     "services.cta.desc": "Let's discuss your unique requirements",
     "services.cta.button": "Get Started",
@@ -207,8 +209,8 @@ export const translations = {
     "home.hero.viewWork": "عرض الأعمال",
     "home.hero.startProject": "طلب مشروع",
     "home.hero.feature1": "أكثر من 5 سنوات في بناء المنتجات الرقمية",
-    "home.hero.bio": "أبني تطبيقات ويب حديثة وقابلة للتوسع وعالية الأداء باستخدام React و Next.js والحركة وأنظمة واجهات أمامية متقدمة.",
-    "home.hero.feature2": "React و Next.js و Redux و TypeScript",
+    "home.hero.bio": "أصمم وأبني تجارب رقمية متقنة باستخدام React وNext.js وThree.js والحركة، مع تطوير أنظمة واجهات أمامية تركز على الأداء.",
+    "home.hero.feature2": "React و Next.js و Redux و TypeScript و Three.js",
     "home.hero.feature3": "واجهات سريعة بحركة مصقولة",
     "home.hero.name": "سلمى طارق",
     "home.hero.subtitle": "واجهات أمامية إبداعية",
@@ -260,6 +262,8 @@ export const translations = {
     "home.about.highlight": "أبرز ما أقدمه",
     "home.toolkit.title": "مجموعة الأدوات",
     "home.toolkit.subtitle": "الأدوات التي أستخدمها بانتظام (وأبني بها مشاريعي):",
+    "home.toolkit.development": "التطوير",
+    "home.toolkit.designAndMarketing": "التصميم والتسويق",
     "home.contact.badge": "تواصل معي",
     "home.contact.title": "فلنبنِ شيئاً نظيفاً وسريعاً.",
     "home.contact.subtitle":
@@ -288,7 +292,7 @@ export const translations = {
     "services.web.title": "تطوير الواجهات",
     "services.web.subtitle": "React.js و Next.js",
     "services.web.desc":
-      "بناء تطبيقات ويب حديثة وعالية الأداء باستخدام React و Next.js مع التركيز على البنية النظيفة وتجربة المستخدم.",
+      "بناء تطبيقات ويب حديثة وقابلة للتوسع وعالية الأداء باستخدام React وNext.js وTypeScript، مع التركيز على بنية برمجية نظيفة وتجارب ثلاثية الأبعاد غامرة وتجربة مستخدم استثنائية.",
     "services.backend.title": "تطوير الخلفية",
     "services.backend.subtitle": "Node.js وواجهات API قابلة للتوسع",
     "services.backend.desc":
@@ -309,7 +313,7 @@ export const translations = {
     "services.additional.performanceDesc": "تحسين السرعة",
     "services.additional.consultation": "استشارات",
     "services.additional.consultationDesc": "إرشاد خبير",
-    
+
     // الخدمات الإضافية المحدثة:
     "services.additional.dashboard": "لوحة تحكم سلسة",
     "services.additional.dashboardDesc": "إدارة وإضافة المنتجات بسهولة",
@@ -320,7 +324,7 @@ export const translations = {
     // 🚀 الخدمة الرابعة الجديدة:
     "services.additional.seo": "تهيئة محركات البحث SEO",
     "services.additional.seoDesc": "تحسين ظهور موقعك في نتائج بحث جوجل الأولى",
-    
+
     "services.cta.title": "تحتاج حلاً مخصصاً؟",
     "services.cta.desc": "لنناقش متطلباتك الفريدة",
     "services.cta.button": "ابدأ الآن",

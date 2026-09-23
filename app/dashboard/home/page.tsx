@@ -12,9 +12,7 @@ import {
     Code2,
     MessageCircle,
     Check,
-    Smartphone as PhoneIcon,
     Globe,
-    Server,
     ArrowRight,
     User,
     Briefcase,
@@ -24,6 +22,8 @@ import { useLanguage } from '@/app/context/LanguageContext';
 import { openWhatsApp } from '@/app/lib/whatsapp';
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
+const GITHUB_PROFILE_URL = 'https://github.com/salma13ta';
+const GITHUB_AVATAR_URL = `${GITHUB_PROFILE_URL}.png?size=800`;
 
 function GitHubIcon({ className }: { className?: string }) {
     return (
@@ -41,20 +41,21 @@ function LinkedInIcon({ className }: { className?: string }) {
     );
 }
 
-const TOOLKIT = [
-    'TypeScript',
-    'React / Next.js',
-    'Node / Nest',
-    'PostgreSQL / Prisma',
-    'Tailwind CSS',
-    'GSAP / Framer Motion',
-    'Performance / Accessibility',
-    'Three.js / R3F',
-    'Blender',
-    'Python',
-    'Docker / CI',
-    'AWS fundamentals',
-] as const;
+const TOOLKIT = {
+    development: [
+        'TypeScript',
+        'React.js',
+        'Next.js',
+        'Redux Toolkit',
+        'Three.js',
+        'Tailwind CSS',
+    ],
+    designAndMarketing: [
+        'UI/UX & Graphic Design',
+        'Canva Pro',
+        'Digital & Social Media Marketing',
+    ],
+} as const;
 
 export default function HomePage() {
     const router = useRouter();
@@ -152,33 +153,19 @@ export default function HomePage() {
             title: t('services.web.title'),
             subtitle: t('services.web.subtitle'),
             description: t('services.web.desc'),
-            gradient:'from-[#10ad43] to-[#428658]',
+            gradient: 'from-[#10ad43] to-[#428658]',
             features: [
                 'Responsive & Mobile-First Design',
                 'Reusable Components Architecture',
-                'State Management (Redux Toolkit)',
-                'API Integration (REST APIs)',
-                'Performance Optimization',
-                'Interactive UI & Animations',
+                'Type-Safe Architecture ',
+                'Immersive 3D Graphics & WebGL ',
+                'Server-Side Rendering & SEO',
+                'State Management with Redux Toolkit',
+                'API Integration & Data Fetching',
+                'Performance & Animation Optimization ',
+                'Interactive UI & Glassmorphism Design',
             ],
-            technologies: ['React.js', 'Next.js', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS'],
-        },
-        {
-            id: 'backend',
-            icon: Server,
-            title: t('services.backend.title'),
-            subtitle: t('services.backend.subtitle'),
-            description: t('services.backend.desc'),
-            gradient:'from-[#428658] to-[#10ad43]',
-            features: [
-                'RESTful API Development',
-                'Authentication & Authorization (JWT)',
-                'Booking Systems & Business Logic',
-                'Admin Dashboards & Custom Solutions',
-                'Database Design & Optimization',
-                'Performance & Security Best Practices',
-            ],
-            technologies: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'JWT', 'REST APIs'],
+            technologies: ['React.js', 'Next.js', 'TypeScript', 'Three.js', 'Redux Toolkit', 'Tailwind CSS'],
         },
     ];
 
@@ -209,11 +196,11 @@ export default function HomePage() {
 
             <div className="dash-page relative overflow-x-hidden">
                 {/* Hero */}
-                <section className="relative overflow-hidden border-b border-white/10">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#002c22]/10 via-transparent to-transparent pointer-events-none" />
+                <section id="home" className="relative overflow-hidden border-b border-white/10">
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#002c22]/10 via-transparent to-transparent pointer-events-none" />
                     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-14 py-10 sm:py-14 md:py-20 lg:py-24">
                         <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
-                        <motion.div
+                            <motion.div
                                 variants={heroCard}
                                 initial="hidden"
                                 animate="visible"
@@ -221,9 +208,21 @@ export default function HomePage() {
                             >
                                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-5 py-3 sm:py-4 border-b border-white/10">
                                     <div className="flex items-center gap-3 min-w-0">
-                                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
-                                            S
-                                        </div>
+                                        <a
+                                            href={GITHUB_PROFILE_URL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label="Open Salma's GitHub profile"
+                                            className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-emerald-300/40 shrink-0"
+                                        >
+                                            <Image
+                                                src={GITHUB_AVATAR_URL}
+                                                alt="Salma's GitHub profile"
+                                                fill
+                                                sizes="40px"
+                                                className="object-cover"
+                                            />
+                                        </a>
                                         <div className="min-w-0">
                                             <p className="text-gray-600 font-semibold text-sm truncate">{t('home.hero.name')}</p>
                                             <p className="text-gray-400 text-xs truncate">{t('home.hero.subtitle')}</p>
@@ -234,22 +233,29 @@ export default function HomePage() {
                                     </span>
                                 </div>
 
-                                <div className="relative mx-3 sm:mx-4 mt-3 sm:mt-4 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-[#0d1f1a] aspect-[4/3] sm:aspect-[16/11]">
+                                <div className="hero-image-frame relative mx-3 sm:mx-4 mt-3 sm:mt-4 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-[#0d1f1a] aspect-[4/3] sm:aspect-[16/11]">
                                     <motion.div
                                         className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.35),transparent_65%)]"
                                         animate={reduceMotion ? undefined : { opacity: [0.35, 0.65, 0.35], scale: [1, 1.06, 1] }}
                                         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                                     />
                                     <div className="absolute inset-0 overflow-hidden">
-                                        <Image
-                                            src="/hero-illustration.png"
-                                            alt=""
-                                            fill
-                                            sizes="(max-width: 640px) 100vw, 50vw"
-                                            className="object-cover opacity-95"
-                                            style={{ objectPosition: '74% 1%' }}
-                                            priority
-                                        />
+                                        <a
+                                            href={GITHUB_PROFILE_URL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label="Open Salma's GitHub profile"
+                                            className="block h-full w-full"
+                                        >
+                                            <Image
+                                                src={GITHUB_AVATAR_URL}
+                                                alt="Salma's GitHub profile"
+                                                fill
+                                                sizes="(max-width: 640px) 100vw, 50vw"
+                                                className="hero-github-image object-contain p-5 sm:p-8 opacity-95"
+                                                priority
+                                            />
+                                        </a>
                                     </div>
 
                                     <motion.span
@@ -274,7 +280,7 @@ export default function HomePage() {
                                     </motion.span>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 p-3 sm:p-4">
+                                <div className="grid  sm:gap-3 p-3 sm:p-4">
                                     <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.03] p-3 sm:p-4">
                                         <p className="text-gray-500 font-semibold text-sm leading-snug mb-1.5">
                                             {t('home.hero.cardTitle')}
@@ -284,8 +290,8 @@ export default function HomePage() {
                                         </p>
                                     </div>
 
-                                    <div className="relative grid grid-rows-2 gap-2.5 sm:gap-3">
-                                    <motion.span
+                                    {/* <div className="relative grid grid-rows-2 gap-2.5 sm:gap-3">
+                                        <motion.span
                                             initial={reduceMotion ? false : { opacity: 0, scale: 0.9 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: reduceMotion ? 0 : 1.35, duration: 0.45 }}
@@ -295,7 +301,7 @@ export default function HomePage() {
                                             <PhoneIcon className="w-3 h-3" />
                                             {t('home.hero.responsive')}
                                         </motion.span>
-                                        
+
                                         <motion.div
                                             initial={reduceMotion ? false : { opacity: 0, x: dir === 'rtl' ? -16 : 16 }}
                                             animate={{ opacity: 1, x: 0 }}
@@ -315,8 +321,8 @@ export default function HomePage() {
                                             <span className="text-neutral-500 text-xs">{t('home.hero.cleanCode')}</span>
                                         </motion.div>
 
-                                       
-                                    </div>
+
+                                    </div> */}
                                 </div>
                             </motion.div>
                             <motion.div
@@ -427,6 +433,7 @@ export default function HomePage() {
                     <div className="min-h-full pb-8 ">
                         {/* Services */}
                         <motion.section
+                            id="services"
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: '-60px' }}
@@ -447,34 +454,46 @@ export default function HomePage() {
                                         <motion.div
                                             key={service.id}
                                             variants={serviceCardVariant}
-                                            className={`overflow-hidden rounded-2xl ${cardClass} ${isExpanded ? 'border-cyan-500/40' : ''}`}
+                                            className={`group overflow-hidden rounded-2xl ${cardClass} ${isExpanded ? 'border-[#009966]/60' : 'border-white/10'} transition-colors duration-300`}
                                         >
                                             <motion.div
                                                 whileTap={reduceMotion ? undefined : { scale: 0.99 }}
                                                 onClick={() => setSelectedService(isExpanded ? null : service.id)}
-                                                className="p-4 sm:p-6 cursor-pointer"
+                                                className="relative p-5 sm:p-8 cursor-pointer"
                                             >
-                                                <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-                                                    <div
-                                                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center bg-gradient-to-r ${service.gradient} shadow-[0_8px_20px_rgba(0,212,255,0.25)] shrink-0`}
-                                                    >
-                                                        <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                                                    </div>
+                                                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#10ad4248] via-[#72d57204] to-transparent" />
+                                                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                                                    <div className="flex items-start gap-4 sm:gap-5 min-w-0">
+                                                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#10ad43] to-[#428658] shadow-[0_10px_28px_rgba(16,173,67,0.28)] shrink-0">
+                                                            <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+                                                        </div>
 
-                                                    <div className="flex-1 min-w-0">
-                                                        <h3 className="text-lg sm:text-xl font-bold text-app-text-h1 truncate">{service.title}</h3>
-                                                        <p className="text-xs sm:text-sm text-[#009966]">{service.subtitle}</p>
+                                                        <div className="min-w-0">
+                                                            <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#72d572]">Frontend service</p>
+                                                            <h3 className="text-xl sm:text-2xl font-bold text-app-text-h1">{service.title}</h3>
+                                                            <p className="mt-1 text-xs sm:text-sm text-[#009966]">{service.subtitle}</p>
+                                                        </div>
                                                     </div>
 
                                                     <motion.div
                                                         animate={{ rotate: isExpanded ? 90 : 0 }}
                                                         transition={{ duration: reduceMotion ? 0 : 0.25 }}
+                                                        className="self-end lg:self-start rounded-full border border-[#72d572]/30 p-2"
                                                     >
-                                                        <ArrowRight className="w-5 h-5 text-[#009966] rtl:rotate-180 shrink-0" />
+                                                        <ArrowRight className="w-5 h-5 text-[#72d572] rtl:rotate-180" />
                                                     </motion.div>
                                                 </div>
 
-                                                <p className="dash-muted text-xs sm:text-sm leading-relaxed">{service.description}</p>
+                                                <div className="mt-6 grid gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+                                                    <p className="dash-muted max-w-2xl text-sm leading-7">{service.description}</p>
+                                                    <div className="flex flex-wrap gap-2 lg:justify-end">
+                                                        {service.technologies.map((tech) => (
+                                                            <span key={tech} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] text-app-text-muted">
+                                                                {tech}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
                                             </motion.div>
 
                                             <AnimatePresence initial={false}>
@@ -550,7 +569,7 @@ export default function HomePage() {
                                     </p>
 
                                     <p className="text-neutral-400 text-sm md:text-base leading-relaxed mb-6 sm:mb-8 border-s-2 color-mix(in oklab,rgba(79, 145, 99, 0.68) 15%, transparent) ps-4 italic">
-                                        &ldquo;{t('about.quote')}&rdquo; 
+                                        &ldquo;{t('about.quote')}&rdquo;
                                     </p>
 
                                     <div className="border color-mix(in oklab,rgba(80, 154, 102, 0.68) 15%, transparent) rounded-2xl p-4 sm:p-5 mb-5 sm:mb-6">
@@ -593,9 +612,9 @@ export default function HomePage() {
                                     viewport={{ once: true, margin: '-60px' }}
                                     variants={scrollRevealVariant}
                                     className="lg:col-span-5 border border-white/5 color-mix(in oklab,rgba(80, 154, 102, 0.68) 15%, transparent) rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 relative overflow-hidden shadow-2xl before:absolute before:top-0 before:start-0 before:w-full before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#039a67]/40 before:to-transparent bg-[#dde5fa05]"
-                                >   
-                                       <div className="absolute -top-20 -end-20 w-60 h-60 bg-[#039a67]/5 blur-[100px] rounded-full pointer-events-none" />
-                                
+                                >
+                                    <div className="absolute -top-20 -end-20 w-60 h-60 bg-[#039a67]/5 blur-[100px] rounded-full pointer-events-none" />
+
                                     <div className="flex items-center gap-3 mb-6 sm:mb-8">
                                         <div className="p-2 bg-[#039a67]/24 border border-white/5 rounded-xl text-[#039a67]">
                                             <Briefcase size={22} />
@@ -651,19 +670,28 @@ export default function HomePage() {
                             variants={scrollRevealVariant}
                             className="px-4 sm:px-6 mb-10 sm:mb-12 max-w-7xl mx-auto"
                         >
-                           <div className="dash-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border-[3px] color-mix(in oklab,rgba(80, 154, 102, 0.68) 15%, transparent) backdrop-blur-md">
-                           <h2 className="text-[2rem] sm:text-[2rem] font-bold text-app-text-h1 mb-1.5 sm:mb-2">{t('home.toolkit.title')}</h2>
+                            <div className="dash-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border-[3px] color-mix(in oklab,rgba(80, 154, 102, 0.68) 15%, transparent) backdrop-blur-md">
+                                <h2 className="text-[2rem] sm:text-[2rem] font-bold text-app-text-h1 mb-1.5 sm:mb-2">{t('home.toolkit.title')}</h2>
                                 <p className="text-xs sm:text-sm text-neutral-400 mb-4 sm:mb-6">{t('home.toolkit.subtitle')}</p>
 
-                                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                                    {TOOLKIT.map((tool, idx) => (
-                                        <motion.span
-                                            key={idx}
-                                            whileHover={reduceMotion ? undefined : { scale: 1.05, borderColor: '#009966', backgroundColor: 'rgba(255,255,255,0.05)' }}
-                                            className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#009966]/10 bg-white/[0.02] text-[11px] sm:text-xs text-neutral-400 font-medium transition-colors cursor-default"
-                                        >
-                                            {tool}
-                                        </motion.span>
+                                <div className="grid gap-5 sm:gap-6">
+                                    {Object.entries(TOOLKIT).map(([category, tools]) => (
+                                        <div key={category}>
+                                            <h3 className="mb-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#72d572]">
+                                                {t(`home.toolkit.${category}`)}
+                                            </h3>
+                                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                                                {tools.map((tool) => (
+                                                    <motion.span
+                                                        key={tool}
+                                                        whileHover={reduceMotion ? undefined : { scale: 1.05, borderColor: '#009966', backgroundColor: 'rgba(255,255,255,0.05)' }}
+                                                        className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#009966]/10 bg-white/[0.02] text-[11px] sm:text-xs text-neutral-400 font-medium transition-colors cursor-default"
+                                                    >
+                                                        {tool}
+                                                    </motion.span>
+                                                ))}
+                                            </div>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
@@ -724,7 +752,7 @@ export default function HomePage() {
                                         </p>
 
                                         <motion.a
-                                            href="https://github.com"
+                                            href={GITHUB_PROFILE_URL}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             whileHover={reduceMotion ? undefined : { borderColor: 'rgba(255,255,255,0.2)', x: dir === 'rtl' ? -4 : 4 }}
@@ -771,14 +799,14 @@ export default function HomePage() {
                                 <div className="flex flex-col items-center gap-3 sm:gap-4 order-1 md:order-2">
                                     <h3 className="text-[16px] font-semibold text-gray-500  tracking-wide">{t('footer.linksTitle')}</h3>
                                     <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-x-8 sm:gap-y-3 text-xs sm:text-sm text-neutral-400">
-                                        <Link href="/dashboard/h" className="hover:text-white transition-colors py-1">{t('footer.home')}</Link>
+                                        <Link href="/dashboard/home#home" className="hover:text-white transition-colors py-1">{t('footer.home')}</Link>
                                         <Link href="/dashboard/Portfolio" className="hover:text-white transition-colors py-1">{t('footer.projects')}</Link>
-                                        <Link href="/dashboard/services" className="hover:text-white transition-colors py-1">{t('footer.services')}</Link>
+                                        <Link href="/dashboard/home#services" className="hover:text-white transition-colors py-1">{t('footer.services')}</Link>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-4 order-2 md:order-3">
-                                    <a href="https://github.com/salma13ta" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="GitHub">
+                                    <a href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="GitHub">
                                         <GitHubIcon className="w-4 h-4" />
                                     </a>
                                     <a href="https://www.linkedin.com/in/salma-tarek-253a9b403/" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="LinkedIn">

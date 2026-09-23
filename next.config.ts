@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  allowedDevOrigins: ['192.168.1.7'],
-  // ... any other config options you already have
+  allowedDevOrigins: ['192.168.1.8'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
