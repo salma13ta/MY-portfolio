@@ -41,21 +41,16 @@ function LinkedInIcon({ className }: { className?: string }) {
     );
 }
 
-const TOOLKIT = {
-    development: [
-        'TypeScript',
-        'React.js',
-        'Next.js',
-        'Redux Toolkit',
-        'Three.js',
-        'Tailwind CSS',
-    ],
-    designAndMarketing: [
-        'UI/UX & Graphic Design',
-        'Canva Pro',
-        'Digital & Social Media Marketing',
-    ],
-} as const;
+const TOOLKIT = [
+    {
+        labelKey: 'home.toolkit.development' as const,
+        tools: ['TypeScript', 'React.js', 'Next.js', 'Redux Toolkit', 'Three.js', 'Tailwind CSS'],
+    },
+    {
+        labelKey: 'home.toolkit.designAndMarketing' as const,
+        tools: ['UI/UX & Graphic Design', 'Canva Pro', 'Digital & Social Media Marketing'],
+    },
+] as const;
 
 export default function HomePage() {
     const router = useRouter();
@@ -272,8 +267,7 @@ export default function HomePage() {
                                         initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: reduceMotion ? 0 : 1.05, duration: 0.5 }}
-                                        style={reduceMotion ? undefined : { animation: 'hero-float 3s ease-in-out infinite' }}
-                                        className="absolute bottom-2 sm:bottom-3 end-2 sm:end-3 inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-black/60 border border-white/10 text-[9px] sm:text-[10px] text-white backdrop-blur-sm"
+                                        style={reduceMotion ? undefined : ({ animation: 'hero-float 3s ease-in-out infinite' } as any)} className="absolute bottom-2 sm:bottom-3 end-2 sm:end-3 inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-black/60 border border-white/10 text-[9px] sm:text-[10px] text-white backdrop-blur-sm"
                                     >
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#009966]" />
                                         {t('home.hero.liveReady')}
@@ -675,13 +669,13 @@ export default function HomePage() {
                                 <p className="text-xs sm:text-sm text-neutral-400 mb-4 sm:mb-6">{t('home.toolkit.subtitle')}</p>
 
                                 <div className="grid gap-5 sm:gap-6">
-                                    {Object.entries(TOOLKIT).map(([category, tools]) => (
-                                        <div key={category}>
+                                    {TOOLKIT.map((category) => (
+                                        <div key={category.labelKey}>
                                             <h3 className="mb-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#72d572]">
-                                                {t(`home.toolkit.${category}`)}
+                                                {t(category.labelKey)}
                                             </h3>
                                             <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                                                {tools.map((tool) => (
+                                                {category.tools.map((tool) => (
                                                     <motion.span
                                                         key={tool}
                                                         whileHover={reduceMotion ? undefined : { scale: 1.05, borderColor: '#009966', backgroundColor: 'rgba(255,255,255,0.05)' }}

@@ -5,6 +5,14 @@ import { useRouter } from 'next/navigation'; // التغيير هنا: استخ�
 import { motion } from 'framer-motion'; // تأكد من تثبيت framer-motion
 import { Code2, Cpu } from 'lucide-react';
 
+const PARTICLES = Array.from({ length: 20 }, (_, index) => ({
+  id: index,
+  left: `${(index * 37) % 100}%`,
+  top: `${(index * 61) % 100}%`,
+  duration: 2 + (index % 4) * 0.5,
+  delay: (index % 5) * 0.4,
+}));
+
 export default function SplashScreen() {
   const router = useRouter();
 
@@ -17,37 +25,40 @@ export default function SplashScreen() {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #0a0e27 0%, #050810 100%)' }}>
-      
+      style={{ background: 'linear-gradient(135deg, #0a0e27 0%, #050810 100%)' }}>
+
       {/* Animated Background Particles */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full"
+        {PARTICLES.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute"
             style={{
-              background: 'linear-gradient(135deg, #00d4ff, #00ffff)',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: particle.left,
+              top: particle.top,
             }}
-            animate={{
-              opacity: [0.2, 1, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
+          >
+            <motion.div
+              className="w-1 h-1 rounded-full bg-gradient-to-br from-[#00d4ff] to-[#00ffff]"
+              animate={{
+                opacity: [0.2, 1, 0.2],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                delay: particle.delay,
+              }}
+            />
+          </div>
         ))}
       </div>
 
       {/* Circuit Pattern Background */}
       <div className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4ff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4ff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
       />
 
       {/* Logo and Brand */}
@@ -60,8 +71,7 @@ export default function SplashScreen() {
         >
           {/* Glowing Circle Background */}
           <motion.div
-            className="absolute inset-0 rounded-full blur-3xl"
-            style={{ background: 'linear-gradient(135deg, #00d4ff, #0066ff)' }}
+            className="absolute inset-0 rounded-full blur-3xl bg-gradient-to-br from-[#00d4ff] to-[#0066ff]"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.5, 0.8, 0.5],
@@ -71,11 +81,11 @@ export default function SplashScreen() {
 
           {/* Logo Container */}
           <div className="relative w-32 h-32 rounded-full flex items-center justify-center"
-                style={{ 
-                  background: 'rgba(26, 31, 58, 0.6)',
-                  border: '2px solid rgba(0, 212, 255, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                }}>
+            style={{
+              background: 'rgba(26, 31, 58, 0.6)',
+              border: '2px solid rgba(0, 212, 255, 0.3)',
+              backdropFilter: 'blur(10px)',
+            }}>
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -94,12 +104,12 @@ export default function SplashScreen() {
           className="text-center"
         >
           <h1 className="text-5xl font-bold mb-2 tracking-wider"
-              style={{
-                background: 'linear-gradient(135deg, #00d4ff, #00ffff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 0 30px rgba(0, 212, 255, 0.5)',
-              }}>
+            style={{
+              background: 'linear-gradient(135deg, #00d4ff, #00ffff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textShadow: '0 0 30px rgba(0, 212, 255, 0.5)',
+            }}>
             CODEX
           </h1>
           <motion.p
